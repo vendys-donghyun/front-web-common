@@ -1,0 +1,49 @@
+{
+  "extraKnownMarketplaces": {
+    "front-web-claude-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "vendys-donghyun/front-web-claude-marketplace"
+      }
+    }
+  },
+
+  "permissions": {
+    "allow": [
+      "Bash(pnpm install*)",
+      "Bash(pnpm build*)",
+      "Bash(pnpm dev*)",
+      "Bash(pnpm typecheck*)",
+      "Bash(pnpm run *)",
+      "Bash(git status)",
+      "Bash(git log *)",
+      "Bash(git diff *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git checkout *)",
+      "Bash(git branch *)",
+      "Bash(git stash *)",
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(echo *)",
+      "Bash(mkdir *)",
+      "Bash(chmod *)",
+      "Bash(jq *)"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(rm -fr *)",
+      "Bash(git push --force*)",
+      "Bash(git push -f *)",
+      "Bash(git reset --hard *)",
+      "Bash(npm *)",
+      "Bash(yarn *)",
+      "Read(.env)",
+      "Read(.env.*)",
+      "Write(.env)",
+      "Write(.env.*)",
+      "Write(pnpm-lock.yaml)"
+    ],
+    "defaultMode": "default"
+  }
+}

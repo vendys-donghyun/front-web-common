@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "serena": {
+      "command": "/opt/homebrew/bin/uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena",
+        "start-mcp-server",
+        "--context",
+        "ide-assistant",
+        "--project",
+        "/Users/vendys-donghyun/Desktop/Dev/front-web-common",
+        "--open-web-dashboard",
+        "false"
+      ]
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+    }
+  }
+}

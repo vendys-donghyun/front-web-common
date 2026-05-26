@@ -1,0 +1,53 @@
+{
+  "name": "@vendys/front-web-common",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@10.33.2",
+  "description": "Vendys frontend web 공통 모듈",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./auth": {
+      "types": "./dist/auth/index.d.ts",
+      "import": "./dist/auth/index.mjs",
+      "require": "./dist/auth/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "peerDependencies": {
+    "axios": ">=0.16 <2"
+  },
+  "devDependencies": {
+    "@swc/core": "^1.15.40",
+    "@types/node": "^20.0.0",
+    "@vitest/coverage-v8": "^4.1.7",
+    "axios": "^1.15.0",
+    "jsdom": "^29.1.1",
+    "jsencrypt": "^3.5.4",
+    "jwt-decode": "^4.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.3.0",
+    "vitest": "^4.1.7"
+  },
+  "volta": {
+    "node": "22.22.2"
+  }
+}
