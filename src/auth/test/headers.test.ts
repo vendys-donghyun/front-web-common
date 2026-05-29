@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { setHeader } from './headers';
+import { setHeader } from '../headers';
 
 describe('setHeader', () => {
   it('axios 0.x: plain object 헤더에 키-값 할당', () => {

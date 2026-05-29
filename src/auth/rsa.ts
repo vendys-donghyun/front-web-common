@@ -1,5 +1,5 @@
 import JSEncrypt from 'jsencrypt';
-import { RsaEncryptError } from './errors';
+import { AuthError } from './errors';
 
 // Base64로 인코딩된 DER 공개키를 SPKI PEM 형식으로 래핑
 function derToPem(base64DER: string): string {
@@ -17,11 +17,11 @@ export function encryptPasswordRSA(password: string, publicKeyBase64DER: string)
   try {
     encrypt.setPublicKey(derToPem(publicKeyBase64DER));
   } catch (err) {
-    throw new RsaEncryptError('Invalid RSA public key format', err);
+    throw new AuthError('rsa', 'Invalid RSA public key format', { cause: err });
   }
   const cipher = encrypt.encrypt(password);
   if (cipher === false) {
-    throw new RsaEncryptError('RSA encryption failed — invalid public key or input too long');
+    throw new AuthError('rsa', 'RSA encryption failed — invalid public key or input too long');
   }
   return cipher;
 }

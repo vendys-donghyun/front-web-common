@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { isExpired } from './jwt';
+import { isExpired } from '../jwt';
 
 const b64url = (obj: object): string =>
   btoa(JSON.stringify(obj))

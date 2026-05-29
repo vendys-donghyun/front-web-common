@@ -1,10 +1,5 @@
 export { createAuth } from './createAuth';
 export type { CreateAuthOptions, AuthHandle } from './createAuth';
-export type { TokenPair, LoginResponse, Account, AccountPasswordStatus } from './types';
-export {
-  AuthError,
-  KmsError,
-  RsaEncryptError,
-  LoginError,
-  RefreshError,
-} from './errors';
+export { AuthError } from './errors';
+export type { AuthErrorKind } from './errors';
+export type { Account, LoginResponse, AccountPasswordStatus } from './types';

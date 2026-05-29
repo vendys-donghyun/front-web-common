@@ -1,5 +1,5 @@
 import type { AxiosInstance } from 'axios';
-import { KmsError } from './errors';
+import { AuthError } from './errors';
 
 export interface CreateKmsClientOptions {
   axios: AxiosInstance;             // KMS API 호출용 axios 인스턴스 (보통 refresh와 같은 baseURL)
@@ -8,6 +8,8 @@ export interface CreateKmsClientOptions {
 
 export interface KmsClient {
   getPublicKey(): Promise<string>;
+  /** 캐시 무효화 — 키 회전 감지 시 강제 재조회 */
+  invalidate(): void;
 }
 
 // KMS 공개키 조회 + 메모리 캐시
@@ -32,7 +34,7 @@ export function createKmsClient(opts: CreateKmsClientOptions): KmsClient {
         })
         .catch((err) => {
           // 실패 시 캐시 안 채우고 KmsError로 래핑해 throw — 다음 호출에서 재시도 가능
-          throw new KmsError('Failed to fetch KMS public key', err);
+          throw new AuthError('kms', 'Failed to fetch KMS public key', { cause: err });
         })
         .finally(() => {
           inflight = null;
@@ -40,5 +42,6 @@ export function createKmsClient(opts: CreateKmsClientOptions): KmsClient {
 
       return inflight;
     },
+    invalidate: () => { cachedKey = null; },
   };
 }
